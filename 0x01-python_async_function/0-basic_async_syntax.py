@@ -4,7 +4,7 @@ import random
 import asyncio
 
 
-async def wait_random(max_delay: int = 10) -> int:
+async def wait_random(max_delay: int = 10) -> float:
     """Wait for random integers between 0 and max_delay
 
     Args:
