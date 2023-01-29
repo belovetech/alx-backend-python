@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Parameterize a unit test
 """
-import unittest
 from parameterized import parameterized
+import unittest
 from unittest.mock import patch
 
 from utils import (
@@ -53,8 +53,7 @@ class TestGetJson(unittest.TestCase):
 
 
 class TestMemoize(unittest.TestCase):
-    """Memoize test class that test that a_property method
-     is correctly tested by calling a_method once
+    """Memoize test class
     """
     def test_memoize(self):
         """Test memoize method to ensure that when a_property method
