@@ -74,7 +74,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integeration test for Fixtures
     """
     @classmethod
-    def setUp(cls):
+    def setUpClass(cls):
         """Run set up before the actual test
         """
         config = {"return_value.json.side_effect": [
@@ -107,7 +107,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         self.mock.assert_called()
 
     @classmethod
-    def tearDown(cls):
+    def tearDownClass(cls):
         """Run after the actual test
         """
         cls.get_patcher.stop()
