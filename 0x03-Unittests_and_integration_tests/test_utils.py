@@ -3,13 +3,12 @@
 """
 import unittest
 from parameterized import parameterized
-from unittest.mock import (
-    MagicMock,
-    patch
-)
+from unittest.mock import patch
+
 from utils import (
     access_nested_map,
-    get_json
+    get_json,
+    memoize
 )
 
 
@@ -51,3 +50,27 @@ class TestGetJson(unittest.TestCase):
         self.assertEqual(get_json(test_url), test_payload)
         mock.assert_called_once()
         patcher.stop()
+
+
+class TestMemoize(unittest.TestCase):
+    """Memoize test class that test that a_property method
+     is correctly tested by calling a_method once
+    """
+    def test_memoize(self):
+        """Test memoize methods
+        """
+        class TestClass:
+            """wrapper class for memoize method
+            """
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method') as mock:
+            test_class = TestClass()
+            test_class.a_property()
+            test_class.a_property()
+            mock.assert_called_once()
